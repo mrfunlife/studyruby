@@ -1,0 +1,99 @@
+# String
+s = "hello"
+puts s[-3..-1]
+puts s[0..0]
+puts s[2..1]
+
+
+# Array
+[1, 2, 3]
+[[1,2],[3,4],[5]]
+a = [0,1,2,3,4,5]
+
+#p ['a','b,'c','b','a'] - ['b','c','d']
+
+# Ranges
+p ("aa".."cc").include?("ab")
+
+r = 0...100
+puts r.member? 50
+puts r.member? 99.9
+
+
+# Symbols
+# Cac bien co cung gia tri thi dung symbols de dung trong 1 o nho => tiet kiem bo nho
+:"abc"
+
+
+# Boolean
+puts 1 == true.class
+puts true.class
+
+# Nil
+puts nil.class
+puts 1.nil?
+
+a = "Ruby"
+b = c = "Ruby"
+puts a.equal?(b)
+puts b.equal?(c)
+puts a == b
+
+
+# Dung "*"
+x, *y = 1,2,3
+puts y
+
+x, *y, z = 1, *[2,3,4]
+puts y
+
+# Operator
+
+
+
+# Bai tap:
+# FizzBuzz: Nhap vao 1 mang, neu phan tu chia het cho 2 => print ra: "Fuzz", neu chia het cho 3 -> "Buzz", neu % 2& 3==0 => print FizzBuzz
+
+a = [2,3,4,6,7,8,9,10,12,13,14,22,24,30,34,21,35,34,46,48,60,100]
+a.each do |i|
+    if i % 2 == 0 && i % 3 == 0
+     puts "Fizz Buzz"
+    elsif i %2 == 0
+     puts "Fizz"
+    elsif i % 3 == 0
+     puts "Buzz"
+    else
+    end
+end
+
+
+# Phuong trinh bac 2
+
+
+a,b,c = 2,-7,3
+delta = b * b - 4 * a * c
+puts "Delta: #{delta}"
+
+if a == 0
+  puts "Phuong trinh khong phai la phuong trinh bac 2"
+else
+  if delta < 0
+    puts "Phuong trinh vo nghiem"
+  elsif delta == 0
+    x = -b / (2*a)
+    puts "Phuong trinh co nghiem kep: x1 = x2 = #{x}"
+  else
+    puts "Phuong trinh co 2 nghiem:"
+    x1 = (-b + Math.sqrt(delta)) / (2 * a)
+    x2 = (-b - Math.sqrt(delta)) / (2 * a)
+    puts "x1 = #{x1}"
+    puts "x2 = #{x2}"
+  end
+end
+
+# Closure
+# Proc - Block - Lambda
+# Lambda tro? vao ham - Block tra ve block - Proc thi chuyen block thanh 1 object
+# Doi Proc va Lambda: Lambda: so luong tham so dau vao thif check, proc thi khong quan trong.
+# Lambda Proc goi return va thoat luon, Lamda goi return va tiep tuc chay tiep, lambda chay thread khac/
+# BTVN:  Tim liet ke so nguyen to or uoc chung lon nhat
