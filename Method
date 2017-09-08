@@ -1,0 +1,124 @@
+
+def say(words='hello')
+  puts words + '.'
+end
+
+say()
+say("hi")
+say("how are you")
+say("I'm fine")
+
+
+def some_method(number)
+  number = 7 # this is implicitly returned by the method
+end
+
+a = 5
+some_method(a)
+puts a
+
+
+a = [1, 2, 3]
+
+def mutate(array)
+  array.pop
+end
+
+p "Before mutate method: #{a}"
+mutate(a)
+p "After mutate method: #{a}"
+
+def no_mutate(array)
+  array.last
+end
+
+p "Before no_mutate method: #{a}"
+no_mutate(a)
+p "After no_mutate method: #{a}"
+
+
+def add_three(number)
+   return number + 3
+
+end
+
+puts add_three(4)
+
+
+def add_three(n)
+  n + 3
+end
+
+puts "hithere".length.to_s
+
+def add_three(n)
+  new_value = n + 3
+  puts new_value
+  return new_value
+end
+
+add_three(3)
+
+
+def add(a,b)
+  a + b
+end
+
+def subtract(a, b)
+  a - b
+end
+
+
+def multiply(num1, num2)
+  num1 * num2
+end
+
+puts multiply(add(1,2),subtract(3,4))
+
+
+# Exercises
+
+def scream(words)
+  words = words + "!!!!"
+  return
+  puts words
+end
+
+scream("Yippeee")
+
+# Variable Number of Parameters
+def sample (*test)
+   puts "The number of parameters is #{test.length}"
+   for i in 0...test.length
+      puts "The parameters are #{test[i]}"
+   end
+end
+sample "Zara", "6", "F"
+sample "Mac", "36", "M", "MCA"
+
+
+# Method Class
+class Accounts
+  def reading_chare
+  end
+
+  def self.returen_date
+    puts "OK Method Class"
+  end
+
+  def Accounts.return
+    puts "OK Method Class 2"
+  end
+end
+
+Accounts.returen_date
+Accounts.return
+
+
+# Ruby alias Statement
+alias foo bar
+alias $MATCH $&
+
+# Ruby undef Statement
+alias undef bar
+

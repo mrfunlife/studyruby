@@ -1,0 +1,71 @@
+
+# 1. Strings
+# Ex. 1: with double quotes
+puts "The man said, 'Hi there!'"
+
+# Ex 2: with single quotes and escaping
+puts 'The man said, \'Hi there!\''
+
+
+# 2. Symbols [Su dung giong nhu String khi khong muon thay doi hoac in no ra man hinh, thuong la bat bien]
+:name
+:a_symbols
+:"surprisingly, this is also a symbol"
+
+
+# Numbers
+# Example of integers
+
+#1, 2, 3, 4. 50, 3434343
+# Example of floats
+#1.2345, 2345.4267, 98.2234
+
+if 1
+  puts "Hello, World"
+end
+
+# 3. Operations
+
+# Adding, Subtracting, and Multiplying Integers
+puts 1 + 1
+puts 1 - 1
+puts 4 * 4
+puts 16 / 4
+puts 16 % 4
+puts 16 % 5
+puts 15 / 4
+puts 15.0 / 4
+puts 9.75 * 4.32
+puts 4 == 4
+puts 4 == 5
+# String Concatenation
+puts 'foo' + 'foo'
+puts '1' + '1'
+
+# 4. Type Conversion
+puts '12'.to_i
+puts '4'.to_i
+puts '4 hi there'.to_i
+puts 'hi there 4'.to_i
+
+
+# 5. Basic Data Structures
+# Arrays
+p [1,2,3,4,5]
+p [1,2,3,4,5,6][1]
+
+# Hashes
+
+animals = {"dog" => "Boby","cat" => "Miu","Pig" => "Pig"}
+keys = animals.keys
+puts animals["dog"]
+puts "#{keys}"
+
+# 6. Exercises
+year = {"1"=>1975,"2"=>2004,"3"=>2013,"4"=>2001,"5"=>1981}
+puts year["1"]
+dates = [1975,2004,2013,2001,1981]
+puts dates
+
+puts 4.30 * 4.30
+puts 6.13 * 6.13
