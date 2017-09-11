@@ -97,3 +97,103 @@ end
 # Doi Proc va Lambda: Lambda: so luong tham so dau vao thif check, proc thi khong quan trong.
 # Lambda Proc goi return va thoat luon, Lamda goi return va tiep tuc chay tiep, lambda chay thread khac/
 # BTVN:  Tim liet ke so nguyen to or uoc chung lon nhat
+
+#------------------- Noi dung ---------
+
+#Ranges
+r = 1..5
+r1 = 'a'..'d'
+r.each{|c|print c}
+r1.each{|c|print c}
+p r.to_a
+puts ("aa".."cc").include?("ab")
+puts ("aa".."cc").member?("ab")
+puts ("aa".."cc").cover?("ac")
+
+
+# True, False and Nil
+# Object
+puts 8.class
+puts "test".class
+puts "test".is_a? String
+
+a = "Ruby"
+b = c = "Ruby"
+puts a.equal?(b)
+puts b.equal?(c)
+puts a == b
+
+# Variables
+one  = 10
+CM_PER_INCH = 2.54
+
+x, y, z = 1, 2, 3
+x, y, z = [1,2,3]
+x = 1,2,3
+x,y,z = 1, *[2,3]
+puts x
+puts y
+puts z
+x, = [1,2]
+puts x
+x, y, z = 1,2
+puts x
+puts y
+x,*y = 1,2,3
+puts x
+puts y
+x,y,*z = 1,*[2,3,4]
+puts z
+
+a,b,c,d = [1,[2,[3,4]]]
+
+puts a
+p b
+
+
+a,(b,(c,d)) = [1,[2,[3,4]]]
+puts a
+puts b
+puts c
+puts d
+
+x = 3
+y =2
+x >>=3
+puts x
+
+
+# Conditionals
+x = 1
+ unless x!=1
+    puts "OK"
+end
+
+# Loops
+
+puts x = x +1 while  x < 10
+x = 1
+puts x = x + 1 until x > 10
+
+a = [1,2,3]
+puts a.pop until a.empty?
+
+puts "---------------"
+[1,2,3].each{|x|puts x}
+p [1,2,3].map {|x|x*x }
+p [1,2,3].collect{|x|x*x}
+
+
+def display(n)
+  i = 0
+  while (i <= n)
+    yield i
+    i += 1
+  end
+end
+display(10){|y|puts y}
+
+
+puts "hello".chars.map {|c| c.succ }
+
+p "hello".each_byte.to_a

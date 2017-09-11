@@ -1,0 +1,54 @@
+
+
+# Bai 1: Tim so nguyen to tu 0 -> 100
+
+# Tao mang a
+a = [0]
+i = 1
+while i <= 100
+  a +=  [i]
+  i += 1
+end
+
+def is_nguyen_to(n)
+  # isPrime: Dem so lan chia het cho 1 so khac cua n
+  isPrime = 0
+  if n == 0 || n == 1
+    return false
+  else
+    for i in 2..n
+      if n % i == 0
+          break if isPrime >= 2
+          isPrime += 1
+      end
+    end
+    return isPrime != 1? false : true
+  end
+end
+
+# In ra cac so nguyen to trong mang a
+b = []
+a.each do |i|
+  is_nguyen_to(i)? b += [i] : false
+end
+
+puts "Day so nguyen to: #{b}"
+
+
+# Bai 2: Tim Uoc Chung Lon nhat cua 2 so a, b
+
+a, b = 12, 16
+
+if a == 0 || b == 0
+   puts "Khong co uoc so chung lon nhat"
+else
+   while a != 0 && b != 0
+      if a > b
+         a = a % b
+      else
+         b = b % a
+      end
+   end
+
+  puts a == 0?  "Uoc chung lon nhat la #{b}" : "Uoc chung lon nhat la #{a}"
+end
