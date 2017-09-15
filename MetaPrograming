@@ -1,0 +1,93 @@
+puts "--- Reflection ----"
+#ObjectSpace.each_object(Class) {|c| puts c}
+
+puts "Some String"# .methods Get tat ca phuong thuc cua 1 doi tuong
+
+obj = Object.new
+puts obj.respond_to?(:==) # Check xem doi tuong do co phuong thuc do khong
+
+
+puts
+puts "----Send-----"
+puts
+
+class Rubyist
+  def welcome(*args)
+    "Welcome " + args.join(" ")
+  end
+end
+
+obj = Rubyist.new
+puts(obj.send(:welcome,"famuos", "Rubyist"))
+
+def string_demo(*args)
+  return puts args.join(" ")
+end
+
+string_demo("a","b","c")
+
+class RubyIst
+end
+
+ruby_ist = RubyIst.new
+if ruby_ist.respond_to?(:demo)
+  puts ruby_ist.send(:demo)
+else
+  puts "No method find"
+end
+
+puts
+puts "----Define_Method----"
+puts
+
+
+class A
+  define_method(:wilma){puts "Touch me !!!"}
+end
+
+class B < A
+  define_method(:barney){puts "Call me !!!"}
+end
+
+b = B.new
+b.wilma
+b.barney
+
+
+puts
+puts "---- Method Missing ----"
+puts
+
+class Caller
+  def method_missing(m,*args,&block)
+    puts "Called #{m} with ##{args.inspect} and #{block}"
+  end
+end
+
+
+Caller.new.anything
+Caller.new.anything(3,4){something}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

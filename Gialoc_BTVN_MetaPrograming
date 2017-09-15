@@ -1,0 +1,33 @@
+class CarModel
+  methods = ["engine_", "wheel_", "airbag_", "alarm_"]
+
+  methods.each do |method_name|
+
+      define_method("#{method_name}info=") do |info|
+       instance_variable_set("@#{method_name}info", info)
+      end
+
+      define_method("#{method_name}info") do
+      instance_variable_get("@#{method_name}info")
+      end
+
+      define_method("#{method_name}price=") do |info|
+       instance_variable_set("@#{method_name}info", info)
+      end
+
+      define_method("#{method_name}price") do
+      instance_variable_get("@#{method_name}info")
+      end
+  end
+end
+
+
+carModel = CarModel.new
+
+carModel.engine_info=("info")
+puts carModel.engine_info
+
+carModel.engine_price=(1090000)
+puts carModel.engine_price
+
+

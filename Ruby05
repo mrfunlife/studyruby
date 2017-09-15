@@ -265,9 +265,62 @@ b.barney
 
 
 class Array
-  def fold(method)
-    inject {|result, i| result ? result.send(method, i) : i}
+  def foldl(method)
+    inject {|result, i| result ? result.send(method, i) : i }
   end
 end
 
-puts [1000.0,200.0,50.0].fold(/)
+puts [1000.0, 200.0, 50.0].foldl("/") # Feel free to experiment with this
+puts [1,2,3].foldl('+')
+puts [1,2,3].foldl('-')
+puts ['h','e','l','l','o'].foldl('concat')
+
+puts
+puts "Dynamic Method Calls"
+puts
+
+class Glider
+  def lift
+    puts "Rising"
+  end
+
+  def bank
+    puts "Turning"
+  end
+end
+
+class Nomad
+  def initialize(glider)
+    @glider = glider
+  end
+
+  def do action
+    if action == 'lift'
+      @glider.lift
+    elsif action == 'bank'
+      @glider.bank
+    else
+      raise NoMethodError.new(action)
+    end
+  end
+
+  def do_arg(action,argument = nil)
+    if argument == nil
+      puts "argument nil"
+    else
+      puts "argument not nil"
+    end
+  end
+end
+
+nomad = Nomad.new(Glider.new)
+nomad.do("lift")
+nomad.do("bank")
+
+nomad.do_arg("lift")
+nomad.do_arg("lift","argument")
+
+
+puts
+puts "Method Missing"
+puts
