@@ -1,0 +1,71 @@
+
+def counter
+  n = 0
+  return Proc.new{n += 1}
+end
+a = counter
+puts a.call
+puts a.call
+
+b = counter
+puts b.call
+puts a.call
+
+
+# Lambda
+def multiplier(n)
+  lambda{|data|data.collect{|x|x * n}}
+end
+
+doubler = multiplier(2)
+p doubler.call([1,2,3])
+
+
+# Loop
+p [1,2,3].collect{|x|x * x}
+p (1..10).select{|x| x % 2 == 0}
+p (1..10).reject{|x|x%2 ==0}
+
+
+d = [2,5,3,4]
+p sum = d.inject{|s,x|s + x}
+
+
+#File Class
+=begin
+mode = "r+"
+
+file = File.open("friend-list.txt", mode)
+
+File.open("friend-list.txt", mode) do |file|
+  file.puts "- Dong Gia Loc"
+end
+
+puts file.read
+file.close
+=end
+
+require 'logger'
+
+
+def coppy_file(file1,file2)
+  logger = Logger.new(STDOUT)
+  logger.level = Logger::INFO
+  begin
+     input = File.open(file1)
+     indata = input.read()
+     output = File.open(file2,"r")
+     outdata = output.write(indata)
+  rescue Exception => e
+      puts e.message
+      logger.error(e)
+  ensure
+    output.close
+    input.close
+  end
+end
+
+coppy_file("friend-list.txt","friend-list2.txt")
+
+
+

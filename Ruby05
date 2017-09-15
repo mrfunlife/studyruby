@@ -1,0 +1,273 @@
+
+puts "--------------------Module---------------------------"
+# Nhom cac ten phuong thuc, hang so, class
+
+module WarmUp
+  def push_ups
+    "Phew, I need a break!"
+  end
+end
+
+class Gym
+  include WarmUp
+
+  def preacher_curls
+    "I'm building my biceps."
+  end
+end
+
+=begin
+class Dojo
+  include WarmUp
+
+  def tai_kyo_kyu
+    "Look at my stance!"
+  end
+end
+=end
+puts Gym.new.push_ups
+#puts Dojo.new.push_ups
+
+puts WarmUp.class
+puts Class.superclass
+puts Module.superclass
+
+
+# Module dung nhu 1 namespace de phan tach cac class cung ten,
+module Perimeter
+  class Array
+    def initialize
+      @size = 400
+    end
+  end
+end
+
+
+our_array = Perimeter::Array.new
+ruby_array = Array.new
+
+p our_array.class
+p ruby_array.class
+
+puts "------ Constant lookup --------"
+
+module Dojo
+  A = 4
+  module Kata
+    B = 8
+    module Roulette
+      class ScopeIn
+        def push
+          15
+        end
+      end
+    end
+  end
+end
+
+A = 16
+B = 23
+C = 42
+
+
+puts "A - #{A}"
+puts "Dojo::Kata::B - #{Dojo::Kata::B}"
+puts
+puts "B - #{B}"
+puts "Dojo::Kata::B - #{Dojo::Kata::B}"
+puts
+
+puts "C - #{C}"
+puts "Dojo::Kata::Roulette::ScopeIn.new.push - #{Dojo::Kata::Roulette::ScopeIn.new.push}"
+
+
+# Viet phuong thuc cua class trong module. Su dung Extend de tao nhu 1 class method hoacj dung include voi method.seff
+
+
+module Foo
+  def self.included klass
+    puts "Foo has been included
+in class #{klass}"
+    klass.extend ClassMethod
+    klass.send :include, InstanceMethod
+  end
+
+  def self.extended base
+    puts "Class #{base} has been extended with module #{self} !"
+  end
+
+  module InstanceMethod
+      def call_me
+        puts "Hi! "
+      end
+  end
+
+  module ClassMethod
+    def class_method
+      puts "Class_method"
+    end
+  end
+end
+
+
+class Bar
+  include Foo
+end
+
+bar = Bar.new
+bar.call_me
+Bar.class_method
+
+puts
+puts "Exercise ---------------"
+module Cream
+  def have_cream?
+     true
+  end
+end
+
+class Cookie
+  include Cream
+  def have_cookie?
+    false
+  end
+end
+
+puts cookie = Cookie.new.have_cream?
+
+
+require "digest"
+module Encryption
+  def encrypt (string)
+      Digest::SHA2.hexdigest string
+  end
+end
+
+class Person
+  include Encryption
+
+  def encrypted_password
+    encrypt("12345678")
+  end
+end
+
+puts Person.new.encrypt("12345678")
+puts Person.new.encrypted_password
+
+puts
+puts "-------------------- COLECTION --------------"
+
+puts
+puts "Enumerables"
+# No la 1 cai module
+
+az = ("A".."Z")
+
+az.each_with_index do |i, index|
+  puts i if (index + 1) % 3 == 0
+end
+
+puts
+puts "Filter"
+puts "---------------------"
+
+puts [4,8,15,16,23,"42"].all? {|e|e.class == Fixnum}
+puts [4,8,15,16,23,"42"].any? {|e|e.class == String}
+puts [4,8,15,16,23,"42"].none? {|e|e.class == String}
+
+puts
+puts "Exercise"
+
+class Island
+  def self.is_save(string)
+    if string  == "Tom"
+      return false
+    else
+      return true
+    end
+  end
+
+  def self.check_save(boolean)
+    if boolean == true
+      puts "Island is Dead"
+    else
+      puts "Island is Save"
+    end
+  end
+end
+
+
+person_list = ["Tom","Jack","Tom","Jack","Jack"]
+person_list.each do |i|
+    if Island.is_save(i) == false
+      puts "Island is Dead"
+      break
+    else
+      puts "Island is Save"
+    end
+end
+
+Island.check_save(person_list.any?{|i|i == "Tom"})
+
+
+puts
+puts "Array - Hashe"
+puts "Exercise---"
+
+class FionacciNumnbers
+  NUMBERS = [1,1,2,3,5,8,13,21,34,55]
+
+  def each
+    NUMBERS.each{|i| yield i}
+  end
+end
+
+f = FionacciNumnbers.new
+f.each do |fibonacci_number|
+  puts "A Fibonacci number multiplied by 10: #{fibonacci_number*10}"
+end
+
+puts
+puts "MetaPrograming"
+puts "------------------------------"
+
+#ObjectSpace.each_object(Class){|c| puts c}
+# Viet code de sinh ra code
+# Phuong thuc Send cuar ObjectClass
+
+class Rubyist
+def welcome(*args)
+"Welcome " + args.join(' ')
+end
+end
+obj = Rubyist.new
+puts(obj.send(:welcome, "famous", "Rubyists"))
+
+
+puts
+puts "Define Method"
+puts
+
+class AA
+  define_method(:wilma){puts "Touch me!!!"}
+end
+
+a = AA.new
+a.wilma
+
+class BB < AA
+  define_method(:barney){puts "Call me !!!"}
+end
+
+b = BB.new
+b.wilma
+b.barney
+
+
+class Array
+  def fold(method)
+    inject {|result, i| result ? result.send(method, i) : i}
+  end
+end
+
+puts [1000.0,200.0,50.0].fold(/)
