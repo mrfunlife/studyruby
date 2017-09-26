@@ -1,0 +1,97 @@
+
+Quan ly viec muon tra sach o 1 thu vien
+
+Doi tuong duoc sinh ra va co chu ky song.
+
+1. Xac dinh doi tuong trung tam:
+2. Xac dinh thuoc tinh cua cac doi tuong tuong quan
+3. Chon thuoc tinh quan trong nhat de dinh danh ra doi tuong
+4. Xac dinh doi tuong co nhung hanh dong gi can thiet quan ly
+  Dong Tu + Danh Tu
+5. Trong cac doi tuong duoc xac dinh trong B4, chon 1 doi tuong theo STACK sau do lap lai B2, neu khong con doi tuong nao thi Exit.
+
+STACK la gi: Ngan xep, thang nao vo truoc nam o duoi, lay ra sau.
+Nguoc lai STACK la QUEUE la hang doi, ong nao vo truoc thi phuc vu truoc.
+
+- Doc gia:
+  MaDG -> Primary Key
+  HOTEN
+  NGAYSINH
+  DIACHI
+  NGHENGHIEP
+- Hanh dong:
+  Dang ky tai thu vien nao
+  Tao phieu muon sach
+
+=> Chon PhieuMuonSach:
+Quay tro lai buoc 2:
+
+- PhieuMuonSach:
+  SoPM -> Primary Key
+  NgayMuon
+  MaDG
+  MaSach
+- HanhDong:
+  Chua quyen sach nao can muon
+
+=> Chon quyen sach
+Quay tro lai buoc 2:
+- Quyen sach
+  MaSach => Primary key
+  TenSach
+  TacGia
+  NhaXuatBan
+  NamXuatBan
+- Hanh Dong:
+  Duoc muon boi Doc Gia nao
+  [Doc Gia da co roi thi thoi]
+
+  Trong STACK con Thi vien
+  => Chon Thu Vien quay tro lai buoc 2:
+
+-Thu Vien
+  MaTV
+  TenTV
+  DIACHI
+  Email
+  DienThoai
+- Hanh Dong
+  Bao nhieu cuon sach
+  Bao nhieu doc gia
+
+  -> Exit
+
+
+** Kieu Du Lieu:
+TEXT -> 2 BYTE
+
+
+SONGUYEN
+
+1 BYTE -> [0-255] -> TINYINT
+2 BYTE -> [0-65535]  -> SMALLINT
+4 BYTE -> [0-4TY] -> INTEGER
+8 BYTE -> LONG
+
+SOTHUC
+2 BYTE -> [0-65535]  -> REAL
+4 BYTE -> [0-4TY] -> FLOAT
+8 BYTE -> DOUBLE
+
+KIEU DU LIEU KHAC
+  DATETIME
+  BIT
+
+
+Viet cac quan he:
+- 1 doc gia co the co nhieu phieu muon sach
+- 1 phieu muon sach chi co 1 doc gia
+-> Quan he 1 N
+Thoa man 2 quy tac:
+- Cung kieu du Lieu
+- Co 1 thuoc tinh la priama key
+
+- 1 phieu dang ky co nhieu cuon sach
+- 1 cuon sach chi co nhieu phieu dang ky
+-> Quan he N - N
+-> Phai sinh ra mot doi tuong trung gian, phai la dong tu
