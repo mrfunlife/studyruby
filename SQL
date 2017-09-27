@@ -95,3 +95,6 @@ Thoa man 2 quy tac:
 - 1 cuon sach chi co nhieu phieu dang ky
 -> Quan he N - N
 -> Phai sinh ra mot doi tuong trung gian, phai la dong tu
+
+
+- 1 thu vien chua nhieu cuon sach, nhung sach chi thuoc 1 thu vien
