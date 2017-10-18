@@ -30,5 +30,27 @@
 
 
 2. HTML
+-  2 the quan trong la the:
+decriptions: search xong hien thi len
+keywords: tu khoa search
+
+Xu ly bang the <Meta - og/>
+
+<body>
+Dung div vi su linh dong layer
+Render div nhanh hon build table. vi div doc den dau build den do, table phai load het moi tai len.
+
+  Trong div:
+  controls
+  non - controls:
+  - text
+  - link
+  - image
+
+
+
+</body>
+
+
 3. CSS
 4. JS

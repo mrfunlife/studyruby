@@ -1,0 +1,9 @@
+Y nghia cua strong_params:
+
+Gioi han tham so truyen vao
+Tao ra Hash
+
+
+- Hidden tag @email
+Tai sao find email ma khong find id, vi truyen email len de getuser theo email
+

@@ -1,0 +1,25 @@
+
+
+
+Note: Chapter11:
+
+- Tai sao dung lai controller khac ma tao ra controller moi:  Vi Resful chi quy dinh Controller chi quy dinh 1 so ham thoi.
+- Tai sao remember_token phai co attr_accessor: gam biem cho no
+- one for plain-text email and one for
+HTML email -> vi 1 so client email khong ho tro html
+
+
+
+
+Cac buoc cua Account acrivation
+
+
+Bắt đầu người dùng ở trạng thái "không được kích hoạt".
+
+Khi người dùng đăng nhập, tạo mã kích hoạt và tiêu đề kích hoạt tương ứng.
+
+Lưu các kích hoạt kích hoạt vào cơ sở dữ liệu, và sau đó gửi một email cho người sử dụng với một liên kết có chứa các mã kích hoạt mã thông báo và địa chỉ email của người dùng.3
+
+Khi người dùng nhấp vào liên kết, hãy tìm người dùng bằng địa chỉ email và sau đó xác thực mã thông báo bằng cách so sánh với mã kích hoạt.
+
+Nếu người dùng được xác thực, thay đổi trạng thái từ "unactivated" sang "activated".

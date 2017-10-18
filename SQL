@@ -6,9 +6,9 @@ Doi tuong duoc sinh ra va co chu ky song.
 1. Xac dinh doi tuong trung tam:
 2. Xac dinh thuoc tinh cua cac doi tuong tuong quan
 3. Chon thuoc tinh quan trong nhat de dinh danh ra doi tuong
-4. Xac dinh doi tuong co nhung hanh dong gi can thiet quan ly
+4. Xac dinh doi tuong co nhung hanh dong gi can thiet quan ly bang
   Dong Tu + Danh Tu
-5. Trong cac doi tuong duoc xac dinh trong B4, chon 1 doi tuong theo STACK sau do lap lai B2, neu khong con doi tuong nao thi Exit.
+5. Trong cac doi tuong duoc xac dinh trong B4, chon 1 doi tuong danh tu theo STACK sau do lap lai B2, neu khong con doi tuong nao thi Exit.
 
 STACK la gi: Ngan xep, thang nao vo truoc nam o duoi, lay ra sau.
 Nguoc lai STACK la QUEUE la hang doi, ong nao vo truoc thi phuc vu truoc.
@@ -98,3 +98,157 @@ Thoa man 2 quy tac:
 
 
 - 1 thu vien chua nhieu cuon sach, nhung sach chi thuoc 1 thu vien
+
+
+Phan mem quan ly mua ban CD DVD
+
+
+1. Xac dinh doi tuong trung tam:
+
+- Product:
+
+- Customer:
+  Customer_Id
+  Customer_Name
+  Customer_SDT
+  Customer_Email
+  Customer_Address
+
+- Hanh dong: Dat mua Product nao
+
+- Buy
+   Number
+   Customer_Id
+   TimeStamp
+
+
+=> Chon Product
+
+- Product
+  Id_Product
+  NameProduct
+
+  Product chua CDs
+  Product chua DVDs
+
+ => Chon DVDs
+
+- DVDs
+  DVDs_Id
+  Title
+  Studio
+  Price
+
+
+=> Chon CDs
+   Cds_Id
+   Title
+   Artist
+   Label
+   Price
+
+- Hanh dong: CDs
+
+
+
+=> Chon Lenght CD
+   Cds_Id
+   Title
+   Lenght
+
+
+
+ CREATE TABLE IF NOT EXISTS products (product_id int(5) NOT NULL AUTO_INCREMENT, product_name varchar(30) DEFAULT NULL, product_price varchar(20) DEFAULT NULL, PRIMARY KEY(product_id));
+
+INSERT INTO customers (times) VALUES ('2008-11-11 13:23:44');
+
+
+SELECT customers.customer_name, customers.customer_email, FROM Orders INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+
+
+Danh sach table:
+
+
+Customers
+Customers_buys_Cds
+Customers_buys_DVDs
+CDs
+DVDs
+
+
+CREATE TABLE IF NOT EXISTS Products (
+    id int(5) NOT NULL AUTO_INCREMENT,
+    type int(2) DEFAULT NULL,
+    title varchar(50) DEFAULT NULL,
+    price int(7) DEFAULT NULL,
+  artists_id int(5) DEFAULT NULL,
+    publishers_id int(5) DEFAULT NULL,
+    studios_id int(5) DEFAULT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY(artists_id) REFERENCES Artists(id),
+  FOREIGN KEY(publishers_id) REFERENCES Publishers(id),
+    FOREIGN KEY(studios_id) REFERENCES Studios(id)
+    );
+INSERT INTO Tracks(title,length,cds_id) VALUES ("Play Girl",200,3);
+
+
+
+# SQL
+
+A. Phu Thuoc Ham:
+- Khi biet duoc tap thuoc tinh x, se truy ra duoc thuoc tinh y: Cai truy ra dc noi dung.
+
+Vi Du: Xet lich xep lop cua 1 co so giang day trong 1 ngay, ta co cac phu thuoc ham sau:
+
+1. GV, Gio, -> Lop -> Vi pham phu thuoc ham
+2. Gio. Lop -> Phong ->
+3. GV, Gio -> Phong
+
+The nao la vi pham phu thuoc ham:
+
+Q: Quan he -> Tap thuoc tinh Q+
+Q: Khong thay doi theo thoi gian -> Du lieu thay doi theo thoi gian
+
+TQ: Noi dung du lieu trong Q
+Thoa man phu thuoc ham thi x->y, x' -> y'. Neu x = x' thi y = y'
+
+1 the hien cua TQ cua Q thoa PTH x -> y neu:
+moi q,q' thuoc TQ, qX = q'X,=> q.y = q'Y'
+
+3 Luat dan ve phu thuoc ham, Amstrong:
+
+1. Luat phan xa, moi Y thuoc X, X -> Y
+2. Luat cong. Neu X -> Y, Z thupc W thi X,W -> Y,Z
+
+VD: MaSV -> Ho va Ten
+    Nick thuoc Email
+    -> MaSV, Emal => Ho va ten, Nick
+3. Luat bac cau:
+x -> Y,Y -> Z, X -> Z
+
+4. Luat Bac Cau Gia:
+X -> Y va Y,W -> Z thi X, W -> Z
+
+** Quan ly phong hoc: MaPhong -> Suc chua
+                      Sisolop,Suc Chua -> Chua dc lop do hay khong
+                      => Ma phong, sisolop -> Chua dc lop do hay khong
+
+5. Luat Hoi
+X -> Y, X -> Z => X -> Y,Z
+
+6. Luat phan ra
+X -> Y, Z  thuoc Y X -> Z
+
+
+B. Khoa dua tren phu thuoc ham:
+Co 1 quan he Q(thuoc tinh A, B, C, D, E, F, G)
+ Khoa la 1 tap thuoc tinh K  nam trong Q+(Tap thuoc tinh cua Q) sao cho
+ K -> Q+. Tap K phai la Min, khong ton tai K' -> Q+'
+
+ 4 Dang chuan cua CSDL:
+
+ Chuan 1 : Co thuoc tinh kep, thuoc tinh lap
+ Chuan 2 => Do>? => Cac thuoc tinh khong phai la khoa thi phai phu thuoc day du vao khoa
+ Chuan 3 => Tot => X -> Y, x la khoa hoac chua khoa'' hoac y la 1 thuoc tinh nam trong khoa voi moi phu thuoc ham
+ Chuan BCK: Phu thuoc da tri. bang moi gia moi phu thuoc ham phai thoa ma X -> Y voi x la khoa hoac chua khoa.
+
